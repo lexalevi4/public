@@ -1,8 +1,9 @@
 <?php 
-$fields = array(   "login" => "admin",   // Ваш логин к сайту pyxi.ru
-					"days" => 1,   // Берём варианты за 1 сутки 
+$fields = array( 	"login" => "admin",   // Ваш логин к сайту pyxi.ru
+					"days" => 1,    // Берём варианты за 1 сутки 
 					"hours" => 5,   // 5 часов
-					"minutes" => 45,   // и 45 минут
+					"minutes" => 45, // и 45 минут
+					"type" => 1		// аренда
 					// Можно взять варианты максимум за 3 суток, больше просто не отдаст, ошибок не будет.
 				);
 // Отправляем запрос
@@ -38,6 +39,23 @@ foreach($xmlres->flat as $current){
 	$current -> balk;				// Балкон (1 - есть)
 	$current -> TV;					// Телевизор (1 - есть)
 	$current -> short;				// Краткосрочный (1 - да)
+	
+	$current -> clean;				// Свободная продажа (1 - да)
+	$current -> morgage;			// Ипотека (1 - да)
+	$current -> doc;				// Документы готовы (1 - да)
+	$current -> years3;				// Более 3 лет в собственности (1 - да)
+	$current -> invest;				// Новостройка (1 - да)
+	$current -> kvartal;			// Квартал сдачи (для новостроек) (1 - да)
+	$current -> year;				// Год сдачи (для новостроек) (1 - да)
+	$current -> DDU;				// ДДУ (1 - да)
+	$current -> mat;				// Материал стен 
+	$current -> lodzs;				// Лоджии
+	$current -> balks;				// Балконы
+	$current -> SU;					// Санузел
+	$current -> S_zh;				// Площадь кухни
+	$current -> S_zh;				// Жилая площадь
+	$current -> S_ob;				// Общая площадь
+
 	$current -> comment;			// Комментарий
 	$current -> price;				// Цена
 	$current -> deposit; 			// Депозит (1 - есть)
@@ -63,6 +81,6 @@ foreach($xmlres->flat as $current){
 		/*
 		Ваш код для импорта в базу...
 		*/
-
+	echo $current -> id."<br />";
 }
 ?>
